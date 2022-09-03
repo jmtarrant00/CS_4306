@@ -17,9 +17,7 @@
  */ 
 
 // Implementation Section
-// Working code and its documentation goes here
-
-import java.util.*;
+import java.util.*; // import all of util for scanner and ArrayList
 
 public class CommonElements {
     static Scanner inputScan = new Scanner(System.in);
@@ -48,14 +46,15 @@ public class CommonElements {
                     }
                     break;
                 case 2:
-                    for (int i = 0; i < list1.length; i++){
-                        for (int j = 0; j < list2.length; j++) {
+                    for (int i = 0; i < list1.length; i++){ // loop through list1
+                        for (int j = 0; j < list2.length; j++) { // loop through list2
                             comparions++;
-                            if (list1[i] == list2[j]){
+                            if (list1[i] == list2[j]){ // compare current value of list1 to list2 to see if common value
                                 commonVals.add(Integer.valueOf(list1[i]));
                             }
                         }
                     }
+                    // below code is for printing lists 
                     System.out.print("\nList 1: ");
                     for (int i = 0; i < list1.length; i++){
                         System.out.print(list1[i] + " ");
@@ -95,10 +94,3 @@ public class CommonElements {
         return commonVals;
     }
 }
-
-
-// public int Input() {
-//     Scanner input = new Scanner(System.in);
-
-//     System.out.println("");
-// }
