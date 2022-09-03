@@ -39,19 +39,17 @@ public class DecimalToBinary {
                     decNum = Input(); // take input for decimal number
                     break;
                 case 2:
-                    System.out.println("Case 2");
-                    int quotient = decNum;
-                    while (quotient != 0){
-                        binNum.add(quotient % 2);
-                        quotient = quotient / 2;
-                        divisions++;
+                    System.out.print("\nDecmal Value: " + decNum); // print decNum
+                    while (decNum != 0){ // Loop until the quotient is 0
+                        binNum.add(decNum % 2); // Modulus to get binary digit
+                        decNum = decNum / 2;    // Int division to get next decNum to work on 
+                        divisions++;            // increment number of divisions
                     }
-                    System.out.print("\nDecmal Value: " + decNum);
                     System.out.print("\nOutput Binary Number: ");
-                    for (int i = binNum.size() - 1; i >= 0; i--){
+                    for (int i = binNum.size() - 1; i >= 0; i--){ // print binNum starting at the front of the list
                         System.out.print(binNum.get(i));
                     }
-                    System.out.print("\nDivisions: " + divisions);
+                    System.out.print("\nDivisions: " + divisions); // print number of divisions
                     break;
                 case 3:
                     run = false;
