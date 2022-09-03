@@ -3,6 +3,7 @@
 // Term:        Fall 2022
 // Instructor:  Dr. Haddad
 // Assignment:  1
+// IDE:         Visual Studio Code
 
 /* Algorithm Design Block
  * English Description:
