@@ -27,6 +27,7 @@ public class FakeCoins {
         int test = input();
         System.out.println(test);
     }
+    
     public static int input(){
         Scanner input = new Scanner(System.in);
         boolean isInt = false;
