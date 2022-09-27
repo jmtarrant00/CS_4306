@@ -41,7 +41,7 @@ public class DecimalToBinary {
                     break;
                 case 2:
                     System.out.print("\nDecmal Value: " + decNum); // print decNum
-                    while (decNum != 0){ // Loop until the quotient is 0
+                    while (decNum != 0){        // Loop until the quotient is 0
                         binNum.add(decNum % 2); // Modulus to get binary digit
                         decNum = decNum / 2;    // Int division to get next decNum to work on 
                         divisions++;            // increment number of divisions
