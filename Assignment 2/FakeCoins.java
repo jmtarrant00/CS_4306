@@ -23,26 +23,27 @@ import java.util.*;
 
 public class FakeCoins {
     public static void main(String []args){
+        Scanner input = new Scanner(System.in);
         boolean run = true;
         int userInput = 0;
         int stackCount = 0;
         List<Integer> stacks = new ArrayList<Integer>();
         while(run){
             Menu();
-            userInput = input();
-            System.out.print(userInput);
+            userInput = input(input);
+            System.out.println(userInput);
             // break;
             switch(userInput){
                 case 1:
                     System.out.print("Please Input the number of stacks: ");
-                    stackCount = input();
+                    stackCount = input(input);
                     // for(int i = 0; i < stackCount; i++){
                     //     stacks.add();
                     // }
                     break;
                 case 2:
                     System.out.print("Please input the weight of each Stack: ");
-                    getWeights(stacks, stackCount);
+                    getWeights(stacks, stackCount, input);
                     System.out.println(stacks);
                     break;
                 case 3:
@@ -55,25 +56,18 @@ public class FakeCoins {
                     break;
             }
         }
+        input.close();
 
     }
     
-    public static int input(){
-        Scanner input = new Scanner(System.in);
-        boolean isInt = false;
-        int userInput = 0;
-        while (!isInt){
-            if (input.hasNextLine()){
-                userInput = input.nextInt();
-                System.out.println("Inside For: " + userInput);
-                isInt = true;
-            } else {
-                System.out.println("Please input an integer");
-            }
-            input.nextLine();
+    public static int input(Scanner input){
+        // int userInput = 0;
+        while(!input.hasNextInt()) {
+            input.next();
+            System.out.println("Please enter an Integer");
+            System.out.print("Enter Option Number: ");
         }
-        System.out.println("User Input: " + userInput);
-        input.close();
+        int userInput = input.nextInt();
         return userInput;
     }
 
@@ -86,10 +80,10 @@ public class FakeCoins {
                             + "\nEnter Option Number: ");
     }
 
-    public static List<Integer> getWeights(List<Integer> stacks, int stackCount){
+    public static List<Integer> getWeights(List<Integer> stacks, int stackCount, Scanner input){
         for (int i = 0; i < stackCount; i++){
             System.out.print("What is the weight of the coins in stack " + i + 1 + "?");
-            stacks.add(Integer.valueOf(input()));
+            stacks.add(Integer.valueOf(input(input)));
         }
         return stacks;
     }
