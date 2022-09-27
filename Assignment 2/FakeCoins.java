@@ -26,21 +26,24 @@ public class FakeCoins {
         boolean run = true;
         int userInput = 0;
         int stackCount = 0;
-        List<List<Integer>> stacks = new ArrayList<List<Integer>>();
+        List<Integer> stacks = new ArrayList<Integer>();
         while(run){
             Menu();
             userInput = input();
+            System.out.print(userInput);
+            // break;
             switch(userInput){
                 case 1:
                     System.out.print("Please Input the number of stacks: ");
                     stackCount = input();
-                    for(int i = 0; i < stackCount; i++){
-                        stacks.add(new ArrayList<Integer>());
-                    }
+                    // for(int i = 0; i < stackCount; i++){
+                    //     stacks.add();
+                    // }
                     break;
                 case 2:
                     System.out.print("Please input the weight of each Stack: ");
-                    getWeights(stacks);
+                    getWeights(stacks, stackCount);
+                    System.out.println(stacks);
                     break;
                 case 3:
                     System.out.println("Finding Fake Stack...");
@@ -60,14 +63,16 @@ public class FakeCoins {
         boolean isInt = false;
         int userInput = 0;
         while (!isInt){
-            if (input.hasNextInt()){
+            if (input.hasNextLine()){
                 userInput = input.nextInt();
+                System.out.println("Inside For: " + userInput);
                 isInt = true;
             } else {
                 System.out.println("Please input an integer");
             }
             input.nextLine();
         }
+        System.out.println("User Input: " + userInput);
         input.close();
         return userInput;
     }
@@ -81,12 +86,15 @@ public class FakeCoins {
                             + "\nEnter Option Number: ");
     }
 
-    public static List<List<Integer>> getWeights(List<List<Integer>> stacks){
-        // ArrayList<Integer> stacks = new ArrayList<Integer>();
+    public static List<Integer> getWeights(List<Integer> stacks, int stackCount){
+        for (int i = 0; i < stackCount; i++){
+            System.out.print("What is the weight of the coins in stack " + i + 1 + "?");
+            stacks.add(Integer.valueOf(input()));
+        }
         return stacks;
     }
 
-    public static int findFake(List<List<Integer>> stacks) {
+    public static int findFake(List<Integer> stacks) {
         return 0;
     }
 }
