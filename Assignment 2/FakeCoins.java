@@ -12,7 +12,7 @@
  *      To do this, search through the stacks and return the one 
  *      who's coin weight == 11 
  * 
- *  Algorithm Pseudocode Syntax
+ * Algorithm Pseudocode Syntax:
  *  // Searchs for a stack of fake coins
  *  // Input: ArrayList of weights for coin stacks
  *  // Output: Position of stack of fake coins
