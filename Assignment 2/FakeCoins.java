@@ -82,7 +82,7 @@ public class FakeCoins {
 
     public static List<Integer> getWeights(List<Integer> stacks, int stackCount, Scanner input){
         for (int i = 0; i < stackCount; i++){
-            System.out.print("What is the weight of the coins in stack " + i + 1 + "?");
+            System.out.print("What is the weight of the coins in stack " + (i + 1) + "?");
             stacks.add(Integer.valueOf(input(input)));
         }
         return stacks;
