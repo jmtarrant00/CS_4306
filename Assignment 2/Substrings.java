@@ -10,7 +10,6 @@
  *  Take input String
  *      Search through string until first A is found
  *      Find first B and get substring
- *      Store substring in an ArrayList
  *      Find next substring using original A
  *      Once all substrings starting with original A are found, find next A
  *      Repeat process until all substrings are found
@@ -20,13 +19,9 @@
  *  for index ← 0 to mainstring.length
  *      comparisons++
  *      if mainString[index] == 'A'
- *          beginIndex ← index
  *          for j ← index to mainString.length 
  *              comparisons++
  *              if mainString[j] == 'B'
- *                  endIndex ← j
- *                  subString ← mainString.substring(beginIndex, endIndex)
- *                  substrings ← substrings + subString
  *                  numSubstrings++ 
  *      
  */
@@ -110,9 +105,8 @@ public class Substrings {
         }
         //Print out results
         System.out.println("Input String:     " + mainString + "\n"
-                         + "# of substrings:  " + numSubstrings + "\n"
-                         + "# of comparisons: " + comparisons + "\n");
-                        //  + "Substrings:       " + substrings);
+                            + "# of substrings:  " + numSubstrings + "\n"
+                            + "# of comparisons: " + comparisons + "\n");
         return;
     }
     
