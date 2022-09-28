@@ -81,9 +81,25 @@ public class FakeCoins {
     }
 
     public static List<Integer> getWeights(List<Integer> stacks, int stackCount, Scanner input){
+        int weight = 0;
+        // boolean flag = false;
         for (int i = 0; i < stackCount; i++){
-            System.out.print("What is the weight of the coins in stack " + (i + 1) + "?");
-            stacks.add(Integer.valueOf(input(input)));
+            System.out.print("What is the weight of the coins in stack " + (i + 1) + " in grams? ");
+            weight = Integer.valueOf(input(input));
+            while (true){
+                if (weight == 11 && !stacks.contains(11)){
+                    stacks.add(weight);
+                    // flag = true;
+                    break;
+                } else if(weight == 10) {
+                    stacks.add(weight);
+                    // flag = true;
+                    break;
+                } else {
+                    System.out.println("Only one stack can weigh 11 grams");
+                }
+            }
+            // stacks.add(weight);
         }
         return stacks;
     }
