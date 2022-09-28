@@ -59,7 +59,6 @@ public class FakeCoins {
                 case 3: //Third Menu Item
                     System.out.println("\nFinding Fake Stack...\n");
                     funcReturn = findFake(stacks); //Algorithm Function Call
-
                     System.out.println("Total Number of Stacks is:    " + stackCount + "\n"
                                         + "Fake Coins Stack is stack #:  " + funcReturn[0] + "\n"
                                         + "# of weighings required:      " + funcReturn[1]);
@@ -69,7 +68,7 @@ public class FakeCoins {
                     run = false;
                     break;
                 default: //Default in case user enters a non-menu number
-                    System.out.println("Please Input a value between 1 and 4");
+                    System.out.println("Please input a valid menu option");
                     break;
             }
         }
@@ -99,6 +98,7 @@ public class FakeCoins {
 
     public static ArrayList<Integer> getWeights(ArrayList<Integer> stacks, int stackCount, Scanner input){
         int weight = 0; //Variable to store weight while checking the value
+        stacks.removeAll(stacks);
         for (int i = 0; i < stackCount; i++){
             while (true){
                 System.out.print("What is the weight of the coins in stack " + (i + 1) + " in grams? ");
@@ -124,7 +124,7 @@ public class FakeCoins {
         int[] funcReturn = {0, 0}; //Array to pass both fake coin index and number of weighs
         for (int index = 0; index < stacks.size(); index++){
             numWeighs++;
-            if (stacks.get(index) == 11){ //Check to see if the current stack being looked at has a weight of 11
+            if (stacks.get(index) % 11 == 0){ //Check to see if the current stack being looked at has a weight of 11
                 funcReturn[0] = index + 1;
                 funcReturn[1] = numWeighs;
                 return funcReturn; //Return results back to main()
