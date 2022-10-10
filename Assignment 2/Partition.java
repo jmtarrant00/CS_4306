@@ -110,19 +110,27 @@ public class Partition {
             subSets.add(subset);
         }
 
+        System.out.println("size - 2: " + (subSets.size() - 2));
         for (int i = 1; i < (subSets.size() - 2); i++){
             ArrayList<Integer> subset1 = new ArrayList<Integer>(subSets.get(i)); //Get first subset to look at
-            int sum1 = subset1.get(subset1.size() - 1);                          //Retrieve Sum from subset
+            int sum1 = subset1.get(subset1.size() - 1);
             subset1.remove(subset1.size() - 1);                                  //Remove sum from Subset
             for (int j = i+1; j < (subSets.size()-1); j++){
                 ArrayList<Integer> subset2 = new ArrayList<Integer>(subSets.get(j)); //Get Second Subset to look at
-                int sum2 = subset2.get(subset2.size() - 1);                          //Retrieve Sum from subset
-                subset2.remove(subset2.size() - 1);                                  //Remove Sum from subset
+                int sum2 = subset2.get(subset2.size() - 1);                            //Retrieve Sum from subset
+                System.out.println("Sum 1: " + sum1);                          //Retrieve Sum from subset
+                System.out.println("Sum 2: " + sum2);
+                subset2.remove(subset2.size() - 1);                                    //Remove Sum from subset
 
+                System.out.println("Subset 1: " + subset1);
+                System.out.println("Subset 2: " + subset2);
                 ArrayList<Integer> intersectSet = new ArrayList<Integer>(subset1); //Copy subset1 to new list to preserve
                 boolean intersect = intersectSet.retainAll(subset2);               //Check for disjointness
+                System.out.println("Intersect: " + intersect);
 
-                if (sum1 == sum2 && intersect) { //If the sums are the same and the sets are disjoint, don
+                if (sum1 == sum2 && intersect) { //If the sums are the same and the sets are disjoint
+                    System.out.println("intersectSet: " + intersectSet);
+                    System.out.println("Intersect: " + intersect);
                     System.out.println("Set Size:                  " + setSize + " Integers\n"
                                         + "Integer Values:            " + set + "\n"
                                         + "Disjoint subsets with the same sum: " + subset1 + "\n"
@@ -131,5 +139,7 @@ public class Partition {
                 }
             }
         }
+        System.out.println("No disjoint subsets with the same sum\nof their elements found");
+        return;
     }
 }
