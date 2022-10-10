@@ -113,24 +113,19 @@ public class Partition {
         System.out.println("size - 2: " + (subSets.size() - 2));
         for (int i = 1; i < (subSets.size() - 2); i++){
             ArrayList<Integer> subset1 = new ArrayList<Integer>(subSets.get(i)); //Get first subset to look at
-            int sum1 = subset1.get(subset1.size() - 1);
+            int sum1 = subset1.get(subset1.size() - 1);                          //Retrive Sum from subset
             subset1.remove(subset1.size() - 1);                                  //Remove sum from Subset
+
             for (int j = i+1; j < (subSets.size()-1); j++){
                 ArrayList<Integer> subset2 = new ArrayList<Integer>(subSets.get(j)); //Get Second Subset to look at
                 int sum2 = subset2.get(subset2.size() - 1);                            //Retrieve Sum from subset
-                System.out.println("Sum 1: " + sum1);                          //Retrieve Sum from subset
-                System.out.println("Sum 2: " + sum2);
                 subset2.remove(subset2.size() - 1);                                    //Remove Sum from subset
 
-                System.out.println("Subset 1: " + subset1);
-                System.out.println("Subset 2: " + subset2);
-                ArrayList<Integer> intersectSet = new ArrayList<Integer>(subset1); //Copy subset1 to new list to preserve
-                boolean intersect = intersectSet.retainAll(subset2);               //Check for disjointness
-                System.out.println("Intersect: " + intersect);
+                ArrayList<Integer> union = new ArrayList<Integer>(subset1);          //Create union set for subsets
+                union.addAll(subset2);                                               //Add subset 2 to union set
 
-                if (sum1 == sum2 && intersect) { //If the sums are the same and the sets are disjoint
-                    System.out.println("intersectSet: " + intersectSet);
-                    System.out.println("Intersect: " + intersect);
+                if (sum1 == sum2 && union.containsAll(set) && union.size() == set.size()) { //If the sums are the same and the sets are disjoint. 
+                    //If the union and set are the same size and have the same elements they are disjoint
                     System.out.println("Set Size:                  " + setSize + " Integers\n"
                                         + "Integer Values:            " + set + "\n"
                                         + "Disjoint subsets with the same sum: " + subset1 + "\n"
