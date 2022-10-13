@@ -16,6 +16,10 @@ public class InsertionCompare {
                     System.out.print("What is the size of the array?");
                     arraySize = input(input);
                     sortArray = new int(arraySize);
+                    for (int i : sortArray){
+                        sortArray[i] = 1;
+                    }
+                    System.out.println(sortArray);
                     break;
                 case 2:
                     break;
