@@ -5,7 +5,8 @@ public class InsertionCompare {
         Scanner input = new Scanner(System.in);
         boolean run = true;
         int userInput;
-        int arraySize;
+        int arraySize = 0;
+        // ArrayList<Integer> sortArray;
         int[] sortArray;
 
         while (run){
@@ -15,17 +16,16 @@ public class InsertionCompare {
                 case 1:
                     System.out.print("What is the size of the array? ");
                     arraySize = input(input);
-                    sortArray = new int[arraySize];
-                    for (int i : sortArray){
-                        sortArray[i] = 1;
-                    }
-                    for (int i : sortArray) {
-                        System.out.println(sortArray[i]);
-                    }
                     break;
                 case 2:
+                    sortArray = new int[arraySize];
+                    for (int i = 0; i < sortArray.length; i++){
+                        sortArray[i] = input(input);
+                    }
+                    // getVals(sortArray, arraySize, input);
                     break;
-                case 3: 
+                case 3:
+                    System.out.println("\nSorting array...\n");
                     break;
                 case 4: 
                     break;
@@ -59,4 +59,16 @@ public class InsertionCompare {
         int userInput = input.nextInt(); //Get int input
         return userInput;
     }
+
+    public static int[] setSize(int[] sortArray, int arraySize){
+        sortArray = new int[arraySize];
+        return sortArray;
+    }
+
+    // public static int[] getVals(int[] sortArray, int arraySize, Scanner input){
+    //     for (int i = 0; i < arraySize; i++){
+    //         sortArray[i] = input(input);
+    //     }
+    //     return sortArray;
+    // }
 }
