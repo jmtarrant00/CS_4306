@@ -6,8 +6,8 @@ public class InsertionCompare {
         boolean run = true;
         int userInput;
         int arraySize = 0;
-        // ArrayList<Integer> sortArray;
-        int[] sortArray;
+        ArrayList<Integer> sortArray = new ArrayList<Integer>(0);
+        ArrayList<Integer> sortArray2 = new ArrayList<Integer>(0);
 
         while (run){
             Menu();
@@ -18,19 +18,19 @@ public class InsertionCompare {
                     arraySize = input(input);
                     break;
                 case 2:
-                    sortArray = new int[arraySize];
-                    for (int i = 0; i < sortArray.length; i++){
-                        sortArray[i] = input(input);
-                    }
-                    // getVals(sortArray, arraySize, input);
+                    sortArray = getVals(sortArray, arraySize, input);
+                    sortArray2.addAll(sortArray);
                     break;
                 case 3:
                     System.out.println("\nSorting array...\n");
-
+                    InsertSort1(sortArray);
+                    InsertSort2(sortArray2);
                     break;
-                case 4: 
+                case 4:
+                    System.out.println("Exiting Program...");
                     break;
                 default:
+                    System.out.println("Please input a valid menu option (1-4)");
                     break;
             }
         }
@@ -61,16 +61,20 @@ public class InsertionCompare {
         return userInput;
     }
 
-    public static int[] setSize(int[] sortArray, int arraySize){
-        sortArray = new int[arraySize];
+    public static ArrayList<Integer> getVals(ArrayList<Integer> sortArray, int arraySize, Scanner input){
+        sortArray.removeAll(sortArray);
+        for (int i = 0; i < arraySize; i++){
+            sortArray.add(input(input));
+        };
+
         return sortArray;
     }
 
-    public static void insertionSort1(int[] sortArray){
-
+    public static void InsertSort1(ArrayList<Integer> sortArray){
+        
     }
 
-    public static void insertionSort2(int[] sortArray){
+    public static void InsertSort2(ArrayList<Integer> sortArray){
 
     }
 
