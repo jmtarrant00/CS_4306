@@ -10,7 +10,7 @@ public class FakeCoin2 {
 
         while(run){
             Menu();
-            userInput = input.getInput(input);
+            userInput = input(input);
         }
         
 
@@ -24,5 +24,16 @@ public class FakeCoin2 {
                         + "3. Run algorithm and display results"
                         + "4. Exit program"
                         + "Enter option number: ");
+    }
+
+    static int input(Scanner input){
+        // int userInput = 0;
+        while(!input.hasNextInt()) { //Checks if the entered input is an integer
+            input.next();
+            System.out.println("Please enter an Integer");
+            System.out.print("Enter Option Number: "); 
+        }
+        int userInput = input.nextInt(); //Get int input
+        return userInput;
     }
 }
