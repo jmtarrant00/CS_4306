@@ -26,6 +26,7 @@ public class InsertionCompare {
                     break;
                 case 3:
                     System.out.println("\nSorting array...\n");
+
                     break;
                 case 4: 
                     break;
@@ -63,6 +64,14 @@ public class InsertionCompare {
     public static int[] setSize(int[] sortArray, int arraySize){
         sortArray = new int[arraySize];
         return sortArray;
+    }
+
+    public static void insertionSort1(int[] sortArray){
+
+    }
+
+    public static void insertionSort2(int[] sortArray){
+
     }
 
     // public static int[] getVals(int[] sortArray, int arraySize, Scanner input){
