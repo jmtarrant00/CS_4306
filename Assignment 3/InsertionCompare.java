@@ -13,13 +13,15 @@ public class InsertionCompare {
             userInput = input(input);
             switch(userInput){
                 case 1:
-                    System.out.print("What is the size of the array?");
+                    System.out.print("What is the size of the array? ");
                     arraySize = input(input);
-                    sortArray = new int(arraySize);
+                    sortArray = new int[arraySize];
                     for (int i : sortArray){
                         sortArray[i] = 1;
                     }
-                    System.out.println(sortArray);
+                    for (int i : sortArray) {
+                        System.out.println(sortArray[i]);
+                    }
                     break;
                 case 2:
                     break;
