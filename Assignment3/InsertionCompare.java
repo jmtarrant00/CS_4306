@@ -41,7 +41,7 @@ public class InsertionCompare {
      * Input: None
      * Output: Main Menu printed in console
      */
-    public static void Menu(){ 
+    static void Menu(){ 
         System.out.print("\n-------------MAIN MENU--------------\n"
                          + "1. Read Array Size\n"
                          + "2. Read Array Values (integer type)\n"
@@ -50,7 +50,7 @@ public class InsertionCompare {
                          + "Enter option number: ");
     }
 
-    public static int input(Scanner input){
+    static int input(Scanner input){
         // int userInput = 0;
         while(!input.hasNextInt()) { //Checks if the entered input is an integer
             input.next();
@@ -61,7 +61,7 @@ public class InsertionCompare {
         return userInput;
     }
 
-    public static ArrayList<Integer> getVals(ArrayList<Integer> sortArray, int arraySize, Scanner input){
+    static ArrayList<Integer> getVals(ArrayList<Integer> sortArray, int arraySize, Scanner input){
         sortArray.removeAll(sortArray);
         for (int i = 0; i < arraySize; i++){
             sortArray.add(input(input));
@@ -70,18 +70,11 @@ public class InsertionCompare {
         return sortArray;
     }
 
-    public static void InsertSort1(ArrayList<Integer> sortArray){
+    static void InsertSort1(ArrayList<Integer> sortArray){
         
     }
 
-    public static void InsertSort2(ArrayList<Integer> sortArray){
+    static void InsertSort2(ArrayList<Integer> sortArray){
 
     }
-
-    // public static int[] getVals(int[] sortArray, int arraySize, Scanner input){
-    //     for (int i = 0; i < arraySize; i++){
-    //         sortArray[i] = input(input);
-    //     }
-    //     return sortArray;
-    // }
 }
