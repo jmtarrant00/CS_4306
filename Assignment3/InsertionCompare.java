@@ -25,11 +25,17 @@ public class InsertionCompare {
                     break;
                 case 3:
                     System.out.println("\nSorting array...\n");
+                    System.out.println("Array size: " + arraySize);
+                    System.out.print("Array Values: ");
+                    for (int i = 0; i < arraySize; i++){
+                        System.out.print(sortArray.get(i) + " ");
+                    }
                     InsertSort1(sortArray);
                     InsertSort2(sortArray2);
                     break;
                 case 4:
                     System.out.println("Exiting Program...");
+                    run = false;
                     break;
                 default:
                     System.out.println("Please input a valid menu option (1-4)");
@@ -74,6 +80,7 @@ public class InsertionCompare {
     static ArrayList<Integer> getVals(ArrayList<Integer> sortArray, int arraySize, Scanner input){
         sortArray.removeAll(sortArray);
         for (int i = 0; i < arraySize; i++){
+            System.out.print("What is the value at position " + (i+1) + "? ");
             sortArray.add(input(input));
         };
 
@@ -81,23 +88,47 @@ public class InsertionCompare {
     }
 
     static void InsertSort1(ArrayList<Integer> sortArray){
-        Integer[] intArray = new Integer[sortArray.size()];
-        intArray = sortArray.toArray(intArray);
         int length = sortArray.size();
-        int v, j;
+        int v, j, count = 0;
 
         for (int i = 1; i < length - 1; i++){
             v = sortArray.get(i);
             j = i - 1;
             while (j >= 0 && sortArray.get(j) > v){
                 sortArray.set(j+1, sortArray.get(j));
+                count++;
                 j--;
             }
             sortArray.set(j+1, v);
         }
+
+        System.out.println("\nInsertion Sort Stats:\n"
+                         + "      j >= 0:          " + count + "\n"
+                         + "      A[j] > v:        " + count + "\n"
+                         + "      A[j+1] = A[j]:   " + count + "\n"
+                         + "      j = j - 1:       " + count + "\n");
+
+        return;
     }
 
     static void InsertSort2(ArrayList<Integer> sortArray){
+        // Integer[] intArray = new Integer[sortArray.size()];
+        // intArray = sortArray.toArray(intArray);
+        int j, count = 0;
 
+        for (int i = 1; i < (sortArray.size() - 1); i++){
+            j = i - 1;
+            while (j >= 0 && sortArray.get(j) > sortArray.get(j+1)){
+                Collections.swap(sortArray, j, j+1);
+                count++;
+                j--;
+            }
+        }
+
+        System.out.println("Insertion Sort Stats:\n"
+                         + "      j >= 0:          " + count + "\n"
+                         + "      A[j] > v:        " + count + "\n"
+                         + "      A[j+1] = A[j]:   " + (count * 3) + "\n"
+                         + "      j = j - 1:       " + count + "\n");
     }
 }
