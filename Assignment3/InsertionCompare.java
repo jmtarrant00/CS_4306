@@ -52,6 +52,10 @@ public class InsertionCompare {
                          + "Enter option number: ");
     }
 
+    /*Take user input and make sure it's an integer
+     * Input: scanner
+     * Output: integer to be used for input
+     */
     static int input(Scanner input){
         // int userInput = 0;
         while(!input.hasNextInt()) { //Checks if the entered input is an integer
@@ -63,6 +67,10 @@ public class InsertionCompare {
         return userInput;
     }
 
+    /*Add all the values to the arrayList
+     * Input: ArrayList for storing the values, size of the list, and a scanner
+     * Output: ArrayList that contains user defined values
+     */
     static ArrayList<Integer> getVals(ArrayList<Integer> sortArray, int arraySize, Scanner input){
         sortArray.removeAll(sortArray);
         for (int i = 0; i < arraySize; i++){
@@ -73,7 +81,20 @@ public class InsertionCompare {
     }
 
     static void InsertSort1(ArrayList<Integer> sortArray){
-        
+        Integer[] intArray = new Integer[sortArray.size()];
+        intArray = sortArray.toArray(intArray);
+        int length = sortArray.size();
+        int v, j;
+
+        for (int i = 1; i < length - 1; i++){
+            v = sortArray.get(i);
+            j = i - 1;
+            while (j >= 0 && sortArray.get(j) > v){
+                sortArray.set(j+1, sortArray.get(j));
+                j--;
+            }
+            sortArray.set(j+1, v);
+        }
     }
 
     static void InsertSort2(ArrayList<Integer> sortArray){
