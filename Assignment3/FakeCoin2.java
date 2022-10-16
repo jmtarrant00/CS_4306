@@ -3,10 +3,12 @@ package Assignment3;
 import java.util.*;
 
 public class FakeCoin2 {
+    static int maxWeight = 0;
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         boolean run = true;
-        int userInput = 0, numCoins;
+        int userInput = 0, numCoins = 0;
+        ArrayList<Integer> coins = new ArrayList<Integer>();
 
         while(run){
             Menu();
@@ -17,14 +19,21 @@ public class FakeCoin2 {
                     numCoins = input(input);
                     break;
                 case 2:
-
-                case 3:
+                    coins = getVals(coins, numCoins, input);
+                    break;
+                case 3: 
+                    System.out.println("Finding Fake Coin...");
+                    findFake(coins, numCoins);
+                    break;
                 case 4:
+                    System.out.println("Exiting Program...");
+                    run = false;
+                    break;
                 default:
+                    System.out.println("Please input a valid Menu option (1-4)");
+                    break;
             }
         }
-        
-
         input.close();
     }
 
@@ -48,13 +57,83 @@ public class FakeCoin2 {
         return userInput;
     }
     
-    static ArrayList<Integer> getVals(ArrayList<Integer> sortArray, int arraySize, Scanner input){
-        sortArray.removeAll(sortArray);
+    static ArrayList<Integer> getVals(ArrayList<Integer> coins, int arraySize, Scanner input){
+        int weight;
+        coins.removeAll(coins);
         for (int i = 0; i < arraySize; i++){
             System.out.print("What is the value at position " + (i+1) + "? ");
-            sortArray.add(input(input));
+            weight = input(input);
+            coins.add(weight);
+            if (weight > maxWeight){
+                maxWeight = weight;
+            }
         };
+        return coins;
+    }
 
-        return sortArray;
+    static void findFake(List<Integer> coins, int numCoins){
+        int sum1 = 0, sum2 = 0, sum3 = 0, subLength, count = 0;
+
+        if (coins.size() == 1 && coins.get(0) < maxWeight){
+            return;
+        }
+
+        if((numCoins % 3) == 1) {
+            subLength  = (numCoins / 3);
+            for (int i = 0; i < (subLength + 1); i++){
+                sum1 += coins.get(i);
+                count++;
+            }
+            subLength += count;
+            for (int i = count; i < (subLength + count); i++){
+                sum2 += coins.get(i);
+                count++;
+            }
+            subLength += count;
+            for (int i = count; i < (subLength + count); i++){
+                sum3 = coins.get(i);
+            }
+
+            if (sum1 < sum2 && sum1 < sum3){
+                subLength = (numCoins / 3);
+                findFake(coins.subList(0, subLength + 1), subLength + 1);
+            } else if (sum2 < sum1 && sum2 < sum3){
+
+            } else if (sum3 < sum1 && sum3 < sum1){
+
+            }
+
+        } else if((numCoins % 3) == 2) {
+            subLength  = (numCoins / 3);
+            for (int i = 0; i < (subLength + 1); i++){
+                sum1 += coins.get(i);
+                count++;
+            }
+            subLength += count;
+            for (int i = count; i < (subLength + count + 1); i++){
+                sum2 += coins.get(i);
+                count++;
+            }
+            subLength += count;
+            for (int i = count; i < (subLength + count); i++){
+                sum3 = coins.get(i);
+            }
+        } else {
+            subLength  = (numCoins / 3);
+            for (int i = 0; i < (subLength); i++){
+                sum1 += coins.get(i);
+                count++;
+            }
+            subLength += count;
+            for (int i = count; i < (subLength + count); i++){
+                sum2 += coins.get(i);
+                count++;
+            }
+            subLength += count;
+            for (int i = count; i < (subLength + count); i++){
+                sum3 = coins.get(i);
+            }
+        }
+
     }
 }
