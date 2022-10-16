@@ -13,47 +13,51 @@
 
 //Code Section
 
-
 package Assignment3;
 
+//Import for Scanner and ArrayList
 import java.util.*;
 
 public class InsertionCompare {
     public static void main(String[] args) {
+        //Initialize Scanner
         Scanner input = new Scanner(System.in);
+
+        //Declare Variables
         boolean run = true;
         int userInput;
         int arraySize = 0;
-        ArrayList<Integer> sortArray = new ArrayList<Integer>(0);
-        ArrayList<Integer> sortArray2 = new ArrayList<Integer>(0);
+        ArrayList<Integer> sortArray = new ArrayList<Integer>(0);   //ArrayList for first sort
+        ArrayList<Integer> sortArray2 = new ArrayList<Integer>(0);  //ArrayList for second sort
 
+        //Main Sentinel Loop
         while (run){
-            Menu();
-            userInput = input(input);
+            Menu(); //Print the menu
+            userInput = input(input); //Get user input
             switch(userInput){
-                case 1:
+                case 1: //First Option
                     System.out.print("What is the size of the array? ");
-                    arraySize = input(input);
+                    arraySize = input(input); //Get input for the array size
                     break;
-                case 2:
-                    sortArray = getVals(sortArray, arraySize, input);
-                    sortArray2.addAll(sortArray);
+                case 2: //Second Option
+                    sortArray = getVals(sortArray, arraySize, input); //Get the values to be sorted
+                    sortArray2.addAll(sortArray);                     //Copy all values to second array
                     break;
-                case 3:
+                case 3: //Third Option
                     System.out.println("\nSorting array...\n");
                     System.out.println("Array size: " + arraySize);
                     System.out.print("Array Values: ");
                     for (int i = 0; i < arraySize; i++){
                         System.out.print(sortArray.get(i) + " ");
                     }
-                    InsertSort1(sortArray);
-                    InsertSort2(sortArray2);
+                    InsertSort1(sortArray);  //Run first sort
+                    InsertSort2(sortArray2); //Run second sort
                     break;
-                case 4:
+                case 4: //Fourth Option
                     System.out.println("Exiting Program...");
                     run = false;
                     break;
-                default:
+                default: //Default case
                     System.out.println("Please input a valid menu option (1-4)");
                     break;
             }
@@ -103,16 +107,20 @@ public class InsertionCompare {
         return sortArray;
     }
 
+    /*Do the first insertion sort
+     * Input: arraylist containing values to be sorted
+     * Output: Prints string containing stats about the sorting of the array
+     */
     static void InsertSort1(ArrayList<Integer> sortArray){
-        int length = sortArray.size();
-        int v, j, count = 0;
+        int length = sortArray.size(); //get size of array
+        int v, j, count = 0; //Initialize variables
 
-        for (int i = 1; i < length - 1; i++){
-            v = sortArray.get(i);
-            j = i - 1;
-            while (j >= 0 && sortArray.get(j) > v){
-                sortArray.set(j+1, sortArray.get(j));
-                count++;
+        for (int i = 1; i < length - 1; i++){ //Interate over the array from the second element to the second to last element
+            v = sortArray.get(i); //get second element
+            j = i - 1; //set j to help get element before v
+            while (j >= 0 && sortArray.get(j) > v){ //run while j isn't less than 0 and previous element is less than v
+                sortArray.set(j+1, sortArray.get(j)); //swap element at index j+1 (i) with element at index j
+                count++; //increment counter
                 j--;
             }
             sortArray.set(j+1, v);
@@ -127,6 +135,10 @@ public class InsertionCompare {
         return;
     }
 
+    /*Do the second insertion sort
+     * Input: arraylist containing values to be sorted
+     * Output: Prints string containing stats about the sorting of the array
+     */
     static void InsertSort2(ArrayList<Integer> sortArray){
         // Integer[] intArray = new Integer[sortArray.size()];
         // intArray = sortArray.toArray(intArray);
