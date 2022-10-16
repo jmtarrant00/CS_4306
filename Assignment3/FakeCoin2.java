@@ -1,16 +1,27 @@
 package Assignment3;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class FakeCoin2 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         boolean run = true;
-        int userInput = 0;
+        int userInput = 0, numCoins;
 
         while(run){
             Menu();
             userInput = input(input);
+            switch(userInput){
+                case 1:
+                    System.out.print("How many coins are there? ");
+                    numCoins = input(input);
+                    break;
+                case 2:
+
+                case 3:
+                case 4:
+                default:
+            }
         }
         
 
@@ -35,5 +46,15 @@ public class FakeCoin2 {
         }
         int userInput = input.nextInt(); //Get int input
         return userInput;
+    }
+    
+    static ArrayList<Integer> getVals(ArrayList<Integer> sortArray, int arraySize, Scanner input){
+        sortArray.removeAll(sortArray);
+        for (int i = 0; i < arraySize; i++){
+            System.out.print("What is the value at position " + (i+1) + "? ");
+            sortArray.add(input(input));
+        };
+
+        return sortArray;
     }
 }

@@ -1,3 +1,19 @@
+// Name:        Jnoathan Tarrant
+// Class:       CS 4306/2
+// Term:        Fall 2022
+// Instructor:  Dr. Haddad
+// Assignment:  3
+// IDE:         Visual Studio Code
+
+/*Algorithm Design Block
+ *  
+ *  
+ *      
+ */
+
+//Code Section
+
+
 package Assignment3;
 
 import java.util.*;
