@@ -6,8 +6,29 @@
 // IDE:         Visual Studio Code
 
 /*Algorithm Design Block
- *  
- *  
+ * Logical Steps:
+ *  Figuratively split array into 2 subarrays after first element
+ *  Look at next element in array, and place in appropriate spot in beginning of array
+ *  Repeat until sorted
+ *       
+ * Algorithm Pseudocode Syntax:
+ *  First Sort:
+ *      for i <- 1 to n-1 do 
+ *          v <- A[i]
+ *          j <- i-1
+ *          while j >= 0 and A[j] > v do
+ *              A[j+1] <- A[j]
+ *              j <- j-1
+ *          A[j+1] <- v
+ * Second Sort:
+ *      for i <- 1 to n-1 do
+ *          j <- i-1
+ *          while j >= 0 and A[j]>A[j+1] do
+ *              swap(A[j], A[j+1])
+ *              j <- j-1
+ * 
+ * While there is less code in the second sort algorithm, the swap operation adds more swaps, and thus doing the 
+ *  swap manually is more intensive on the processor. 
  *      
  */
 
@@ -126,7 +147,7 @@ public class InsertionCompare {
             sortArray.set(j+1, v);
         }
 
-        System.out.println("\nInsertion Sort Stats:\n"
+        System.out.println("\nInsertionSort1 Stats:\n"
                          + "      j >= 0:          " + count + "\n"
                          + "      A[j] > v:        " + count + "\n"
                          + "      A[j+1] = A[j]:   " + count + "\n"
@@ -140,23 +161,22 @@ public class InsertionCompare {
      * Output: Prints string containing stats about the sorting of the array
      */
     static void InsertSort2(ArrayList<Integer> sortArray){
-        // Integer[] intArray = new Integer[sortArray.size()];
-        // intArray = sortArray.toArray(intArray);
+        //Initialize Variables
         int j, count = 0;
 
-        for (int i = 1; i < (sortArray.size() - 1); i++){
+        for (int i = 1; i < (sortArray.size() - 1); i++){ //Iterate over the array starting at second element to second to last element
             j = i - 1;
-            while (j >= 0 && sortArray.get(j) > sortArray.get(j+1)){
-                Collections.swap(sortArray, j, j+1);
-                count++;
+            while (j >= 0 && sortArray.get(j) > sortArray.get(j+1)){ //run while j isn't less than 0 and j is greater than next element
+                Collections.swap(sortArray, j, j+1); //swap element j and next element
+                count++; //increment counter
                 j--;
             }
         }
 
-        System.out.println("Insertion Sort Stats:\n"
+        System.out.println("InsertionSort2 Stats:\n"
                          + "      j >= 0:          " + count + "\n"
-                         + "      A[j] > v:        " + count + "\n"
-                         + "      A[j+1] = A[j]:   " + (count * 3) + "\n"
+                         + "      A[j] > A[j+1]    " + count + "\n"
+                         + "      Swap:            " + (count * 3) + "\n"
                          + "      j = j - 1:       " + count + "\n");
     }
 }
