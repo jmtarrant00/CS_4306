@@ -57,7 +57,11 @@
  * 
  * 
  * Question B)
+ *      W(n) = {W([n/3]) + 1    for n>1
+ *             {W(1) = 0        for n=1 
  *  
+ * Question C)
+ *      Divide-by-3 algorithm is roughly 1.5x faster than divide-by-2
  */
 
 //Code Section
@@ -180,7 +184,7 @@ public class FakeCoin2 {
     static void findFake(List<Integer> coins, int numCoins, List<Integer> indices){
         //Initialize Variables
         int sum1 = 0, sum2 = 0, sum3 = 0, subLength = (numCoins / 3);
-
+        divCount = 0;
         //Base Case for recursion. If the stack is size 1, or the first element in the stack is not 5
         if (coins.size() == 1 || coins.get(0) < 5){
             System.out.print("# of Divisions:   " + divCount + "\n"
