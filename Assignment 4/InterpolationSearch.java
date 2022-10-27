@@ -5,7 +5,6 @@
 // Assignment:  4
 // IDE:         Visual Studio Code
 
-import java.util.*;
 
 public class InterpolationSearch {
     private boolean Found;  //indicates if search key is found or not       
@@ -13,21 +12,21 @@ public class InterpolationSearch {
     private int Divisions = 0;  //holds # of divisions
     private int[] searchSpace;
     private int key;
-    private int low;
-    private int high;
+    private int low = 0;;
+    private int high = 1023;;
     private int[] returns = new int[]{-1, -1, -1, -1};
     
     
-    public InterpolationSearch(int searchSpace[], int key, int low, int high){
+    public InterpolationSearch(int searchSpace[], int key){
         this.searchSpace = searchSpace;
         this.key = key;
-        this.low = low;
-        this.high = high;
 
+        search(this.searchSpace, this.key, low, high);
     }
 
-    public int[] search(int pos){
+    public int[] search(int searchSpace[], int key, int low, int high){
 
+        int pos;
 
         if (low <= high && key >= searchSpace[low] && key <= searchSpace[high]){
             pos = low + (((high - low) / 
@@ -45,7 +44,11 @@ public class InterpolationSearch {
             }
 
             if (searchSpace[pos] < key){
-                return search(pos+1);
+                return search(searchSpace, key, pos + 1, high);
+            }
+
+            if (searchSpace[pos] > key){
+                return search(searchSpace, key, low, pos - 1);
             }
         }
 
