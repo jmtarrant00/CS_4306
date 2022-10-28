@@ -21,6 +21,7 @@ public class TestIS {
                 case 1:
                     int num;
                     System.out.println("Creating Array...");
+                    
                     RandomDistinct(Values);
 
                     System.out.println("Sorted Array:");
