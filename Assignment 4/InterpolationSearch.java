@@ -12,13 +12,13 @@ public class InterpolationSearch {
     private int Divisions = 0;  //holds # of divisions
     private int[] searchSpace;
     private int key;
-    private int low = 0;;
-    private int high = 1023;;
+    private int low = 0;
+    private int high = 1023;
     private int[] returns = new int[]{-1, -1, -1, -1};
     
     
     public InterpolationSearch(int searchSpace[], int key){
-        this.searchSpace = searchSpace;
+        this.searchSpace = searchSpace.clone();
         this.key = key;
 
         search(this.searchSpace, this.key, low, high);
@@ -30,16 +30,17 @@ public class InterpolationSearch {
 
         if (low <= high && key >= searchSpace[low] && key <= searchSpace[high]){
             pos = low + (((high - low) / 
-                          (searchSpace[high] - searchSpace[low])) * key -searchSpace[low]);
+                          (searchSpace[high] - searchSpace[low])) * (key - searchSpace[low]));
             Divisions++;
             Index = pos;
-
+            // System.out.println("Pos: " + pos);
             if (searchSpace[pos] == key){
                 Found = true;
                 returns[0] = key;
                 returns[1] = Found ? 1 : 0;
                 returns[2] = Index;
                 returns[3] = Divisions;
+                System.out.println("  " + key + "       " + returns[1] + "      " + returns[2] + "          " + returns[3]);
                 return returns;
             }
 
@@ -51,8 +52,13 @@ public class InterpolationSearch {
                 return search(searchSpace, key, low, pos - 1);
             }
         }
-
+        returns[0] = key;
+        returns[3] = Divisions;
         return returns;
+    }
+
+    public String toString(){
+        return returns[0] + " " + returns[1] + " " + returns[2] + " " + returns[3];
     }
 
         
