@@ -13,10 +13,13 @@ public class TestIS {
         int userInput;
         boolean run = true;
         int Values[] = new int[1024];
+        int tableSize = 1;
+        String question;
 
         while(run){
             Menu();
-            userInput = input(input);
+            question = "Enter Option number: ";
+            userInput = input(input, question);
             switch(userInput){
                 case 1:
                     int num;
@@ -53,8 +56,13 @@ public class TestIS {
                     }
                     break;
                 case 2:
+                    question = "What is the table size? ";
+                    System.out.print(question);
+                    tableSize = input(input, question);
                     break;
                 case 3:
+                    question = "What value to search for? ";
+                    RunIS(Values, tableSize);
                     break;
                 case 4:
                     System.out.println("Exiting Program...");
@@ -76,12 +84,12 @@ public class TestIS {
                        + "\nEnter option number: ");
     }
 
-    static int input(Scanner input){
+    static int input(Scanner input, String question){
         // int userInput = 0;
         while(!input.hasNextInt()) { //Checks if the entered input is an integer
             input.next();
-            System.out.println("Please enter an Integer");
-            System.out.print("Enter Option Number: "); 
+            System.out.println("Please enter an Integer\n");
+            System.out.print(question); 
         }
         int userInput = input.nextInt(); //Get int input
         return userInput;
@@ -128,6 +136,18 @@ public class TestIS {
 
             sortArray(Values, low, pi - 1);
             sortArray(Values, pi + 1, high);
+        }
+    }
+
+    static void RunIS(int[] Values, int tableSize){
+        int key;
+        System.out.println("Key     Found     Index       Divisions\n"
+                       + "-------------------------------------------");
+        for (int i = 0; i < tableSize; i++){
+            key = (int)(Math.random()*9999);
+            System.out.println("Key: " + key);
+            InterpolationSearch search = new InterpolationSearch(Values, key);
+            System.out.println(search);
         }
     }
 }
