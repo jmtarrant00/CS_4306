@@ -21,8 +21,7 @@ public class TestIS {
                 case 1:
                     int num;
                     System.out.println("Creating Array...");
-                    genArray(Values);
-                    sortArray(Values, 0, (Values.length - 1));
+                    RandomDistinct(Values);
 
                     System.out.println("Sorted Array:");
                     
@@ -34,12 +33,12 @@ public class TestIS {
                             if (((i + 1) % 30) == 0){
                                 System.out.println();
                             }
-                        } else if (num > 10 && num < 100){
+                        } else if (num >= 10 && num < 100){
                             System.out.print(num + "     ");
                             if (((i + 1) % 30) == 0){
                                 System.out.println();
                             }
-                        } else if (num > 100 && num < 1000){
+                        } else if (num >= 100 && num < 1000){
                             System.out.print(num + "    ");
                             if (((i + 1) % 30) == 0){
                                 System.out.println();
@@ -87,7 +86,7 @@ public class TestIS {
         return userInput;
     }
 
-    static void genArray(int Values[]){
+    static void RandomDistinct(int Values[]){
         for (int i = 0; i < Values.length; i++){
             Values[i] = (int)(Math.random()*9999);
 
@@ -98,6 +97,7 @@ public class TestIS {
                 }
             }
         }
+        sortArray(Values, 0, (Values.length - 1));
     }
 
     static void swap(int[] Values, int i, int j){
