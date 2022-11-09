@@ -21,6 +21,10 @@ public class testAdvancedSorting {
         int[] decArray3 = new int[100000];
         int[] decArray4 = new int[1000000];
 
+        int[][] arrays = {randArray1, randArray2, randArray3, randArray4, 
+            incArray1, incArray2, incArray3, incArray4, 
+            decArray1, decArray2, decArray3, decArray4};
+
         while (run){
             Menu();
             question = "Enter Option Number: ";
@@ -29,23 +33,20 @@ public class testAdvancedSorting {
             switch(userInput){
                 case 1:
                     System.out.println("Populating Arrays...");
-                    RandomIntegers(randArray1);
-                    System.out.println(Arrays.toString(randArray1));
-                    RandomIntegers(randArray2);
-                    RandomIntegers(randArray3);
-                    RandomIntegers(randArray4);
-                    
-                    IncreasingIntegers(incArray1);
-                    IncreasingIntegers(incArray2);
-                    IncreasingIntegers(incArray3);
-                    IncreasingIntegers(incArray4);
 
-                    DecreasingIntegers(decArray1);
-                    DecreasingIntegers(decArray2);
-                    DecreasingIntegers(decArray3);
-                    DecreasingIntegers(decArray4);
+                    for (int i = 0; i < arrays.length; i++){
+                        if (i >= 0 && i < 4){
+                            RandomIntegers(arrays[i]);
+                        } else if ( i >= 4 && i < 8) {
+                            IncreasingIntegers(arrays[i]);
+                        } else if (i >= 8 && i < 12){
+                            DecreasingIntegers(arrays[i]);
+                        }
+                    }
                     break;
                 case 2:
+                    
+
                     break;
                 case 3:
                     break;
