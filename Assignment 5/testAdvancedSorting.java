@@ -59,43 +59,43 @@ public class testAdvancedSorting {
                     break;
                 case 2:
                     randQS1.setArray(randArray1);
-                    randQS2.setArray(randArray2);
-                    randQS3.setArray(randArray3);
-                    randQS4.setArray(randArray4);
+                    // randQS2.setArray(randArray2);
+                    // randQS3.setArray(randArray3);
+                    // randQS4.setArray(randArray4);
                     incQS1.setArray(incArray1);
-                    incQS2.setArray(incArray2);
-                    incQS3.setArray(incArray3);
-                    incQS4.setArray(incArray4);
+                    // incQS2.setArray(incArray2);
+                    // incQS3.setArray(incArray3);
+                    // incQS4.setArray(incArray4);
                     decQS1.setArray(decArray1);
-                    decQS2.setArray(decArray2);
-                    decQS3.setArray(decArray3);
-                    decQS4.setArray(decArray4);
+                    // decQS2.setArray(decArray2);
+                    // decQS3.setArray(decArray3);
+                    // decQS4.setArray(decArray4);
 
                     randMS1.setArray(randArray1);
-                    randMS2.setArray(randArray2);
-                    randMS3.setArray(randArray3);
-                    randMS4.setArray(randArray4);
+                    // randMS2.setArray(randArray2);
+                    // randMS3.setArray(randArray3);
+                    // randMS4.setArray(randArray4);
                     incMS1.setArray(incArray1);
-                    incMS2.setArray(incArray2);
-                    incMS3.setArray(incArray3);
-                    incMS4.setArray(incArray4);
+                    // incMS2.setArray(incArray2);
+                    // incMS3.setArray(incArray3);
+                    // incMS4.setArray(incArray4);
                     decMS1.setArray(decArray1);
-                    decMS2.setArray(decArray2);
-                    decMS3.setArray(decArray3);
-                    decMS4.setArray(decArray4);
+                    // decMS2.setArray(decArray2);
+                    // decMS3.setArray(decArray3);
+                    // decMS4.setArray(decArray4);
 
                     randHS1.setArray(randArray1);
-                    randHS2.setArray(randArray2);
-                    randHS3.setArray(randArray3);
-                    randHS4.setArray(randArray4);
+                    // randHS2.setArray(randArray2);
+                    // randHS3.setArray(randArray3);
+                    // randHS4.setArray(randArray4);
                     incHS1.setArray(incArray1);
-                    incHS2.setArray(incArray2);
-                    incHS3.setArray(incArray3);
-                    incHS4.setArray(incArray4);
+                    // incHS2.setArray(incArray2);
+                    // incHS3.setArray(incArray3);
+                    // incHS4.setArray(incArray4);
                     decHS1.setArray(decArray1);
-                    decHS2.setArray(decArray2);
-                    decHS3.setArray(decArray3);
-                    decHS4.setArray(decArray4);
+                    // decHS2.setArray(decArray2);
+                    // decHS3.setArray(decArray3);
+                    // decHS4.setArray(decArray4);
 
                     break;
                 case 3:
@@ -104,8 +104,21 @@ public class testAdvancedSorting {
                     System.out.println("-----------------------------------------------------------");
                     System.out.println("MergeSort     " + randMS1.getCompCount() + "       " + randMS2.getCompCount() + "       " + randMS3.getCompCount() + "       " + randMS4.getCompCount());
                     System.out.println("Quicksort     " + randQS1.getCompCount() + "       " + randQS2.getCompCount() + "       " + randQS3.getCompCount() + "       " + randQS4.getCompCount());
-                    
-                                     
+                    System.err.println("Heapsort      " + randHS1.getCompCount() + "       " + randHS2.getCompCount() + "       " + randHS3.getCompCount() + "       " + randHS4.getCompCount());
+                    System.out.println();
+                    System.out.println("Array Type: Increaasing");
+                    System.out.println("Algorithm     n=1000     n=10000     n=100000     n=1000000");
+                    System.out.println("-----------------------------------------------------------");
+                    System.out.println("MergeSort     " + incMS1.getCompCount() + "       " + incMS2.getCompCount() + "       " + incMS3.getCompCount() + "       " + incMS4.getCompCount());
+                    System.out.println("Quicksort     " + incQS1.getCompCount() + "       " + incQS2.getCompCount() + "       " + incQS3.getCompCount() + "       " + incQS4.getCompCount());
+                    System.err.println("Heapsort      " + incHS1.getCompCount() + "       " + incHS2.getCompCount() + "       " + incHS3.getCompCount() + "       " + incHS4.getCompCount());
+                    System.out.println();
+                    System.out.println("Array Type: Decreasing");
+                    System.out.println("Algorithm     n=1000     n=10000     n=100000     n=1000000");
+                    System.out.println("-----------------------------------------------------------");
+                    System.out.println("MergeSort     " + decMS1.getCompCount() + "       " + decMS2.getCompCount() + "       " + decMS3.getCompCount() + "       " + decMS4.getCompCount());
+                    System.out.println("Quicksort     " + decQS1.getCompCount() + "       " + decQS2.getCompCount() + "       " + decQS3.getCompCount() + "       " + decQS4.getCompCount());
+                    System.err.println("Heapsort      " + decHS1.getCompCount() + "       " + decHS2.getCompCount() + "       " + decHS3.getCompCount() + "       " + decHS4.getCompCount());
                     break;
                 case 4:
                     System.out.println("Exiting Program...");
