@@ -1,4 +1,4 @@
-import java.util.Arrays;
+// import java.util.Arrays;
 import java.util.Scanner;
 
 public class testAdvancedSorting {
@@ -45,10 +45,27 @@ public class testAdvancedSorting {
                     }
                     break;
                 case 2:
-                    
+                    Quicksort randQS1 = new Quicksort(randArray1);
+                    Quicksort randQS2 = new Quicksort(randArray2);
+                    Quicksort randQS3 = new Quicksort(randArray3);
+                    Quicksort randQS4 = new Quicksort(randArray4);
+
+                    Quicksort incQS1 = new Quicksort(incArray1);
+                    Quicksort incQS2 = new Quicksort(incArray2);
+                    Quicksort incQS3 = new Quicksort(incArray3);
+                    Quicksort incQS4 = new Quicksort(incArray4);
+
+                    Quicksort decQS1 = new Quicksort(decArray1);
+                    Quicksort decQS2 = new Quicksort(decArray2);
+                    Quicksort decQS3 = new Quicksort(decArray3);
+                    Quicksort decQS4 = new Quicksort(decArray4);
 
                     break;
                 case 3:
+                    System.out.println("Array Type: Random");
+                    System.out.println("Algorithm     n=1000     n=10000     n=100000     n=1000000");
+                    System.out.println("-----------------------------------------------------------");
+                                     
                     break;
                 case 4:
                     System.out.println("Exiting Program...");
