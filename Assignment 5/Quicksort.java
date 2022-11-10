@@ -1,15 +1,18 @@
 
 public class Quicksort {
-    private int low = 0;
-    private int high = 1;
+    private int low = 0, high = 1;
     private int[] array;
     private int compCount = 0;
     
-    public Quicksort(int[] array){
+    public Quicksort(){
+    }
+
+    public void setArray(int[] array){
+        this.array = array;
         this.high = array.length - 1;
-        this.array = array.clone();
 
         QS(this.array, this.low, this.high);
+
     }
 
     private int partition(int[] array, int low, int high){
