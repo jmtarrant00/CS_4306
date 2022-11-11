@@ -6,8 +6,36 @@
 // IDE:         Visual Studio Code
 
 /*Algorithm Design Block
+ * Mergesort:
+ *  Best Case: O(n*log(n))
+ *  Worst Case: O(n*log(n))
+ *  Average Case: O(n*log(n))
+ * 
+ *  Because Mergesort always divides the array into 2 subarrays, the time complexity doesn't 
+ *      change no matter how the array is organized when it's fed into the sort algorithm. 
+ *      The algorithm still has to compare all the elements no matter what
  * 
  * 
+ * Quicksort:
+ *  Best Case: O(n*log(n))
+ *  Worst Case: O(n^2)
+ *  Average Case: O(n*log(n))
+ * 
+ *  While Quicksort is the most efficient sorting algorithm, the increasing and decreasing arrays 
+ *      took the longest to sort out of any of the algorithms. I think this is due to the fact that
+ *      the pivot is initially set to the last element in the array, which is either the largest 
+ *      element or the smallest element for the increasing and decreasing arrays. This means that 
+ *      the partitioning algorithm returns the array with one less element each time. 
+ * 
+ * 
+ * Heapsort:
+ *  Best Case: O(n*log(n))
+ *  Worst Case: O(n*log(n))
+ *  Average Case: O(n*log(n))
+ * 
+ *  For heapsort, the difference in comparisons from best to worst to average are not very different, 
+ *      which is to be expected since all the cases have the same time complexity. It is interesting to 
+ *      note that the increasing array had a greater difference from the random array than the decreasing one. 
  */
 
  // Import Scanner to take input
