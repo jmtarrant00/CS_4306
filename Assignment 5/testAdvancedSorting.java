@@ -2,7 +2,7 @@
 // Class:       CS 4306/2
 // Term:        Fall 2022
 // Instructor:  Dr. Haddad
-// Assignment:  4
+// Assignment:  5
 // IDE:         Visual Studio Code
 
 /*Algorithm Design Block
@@ -88,51 +88,42 @@ public class testAdvancedSorting {
                     break;
                 case 2: //Second Option
                     //Perform Quicksort on arrays
-                    System.out.println("Random QS");
                     randQS1.setArray(randArray1);
                     randQS2.setArray(randArray2);
                     randQS3.setArray(randArray3);
                     randQS4.setArray(randArray4);
-                    System.out.println("Inc QS");
                     incQS1.setArray(incArray1);
                     incQS2.setArray(incArray2);
                     incQS3.setArray(incArray3);
                     incQS4.setArray(incArray4);
-                    System.out.println("Dec QS");
                     decQS1.setArray(decArray1);
                     decQS2.setArray(decArray2);
                     decQS3.setArray(decArray3);
                     decQS4.setArray(decArray4);
 
                     //Perform MergeSort on arrays
-                    System.out.println("Random MS");
                     randMS1.setArray(randArray1);
                     randMS2.setArray(randArray2);
                     randMS3.setArray(randArray3);
                     randMS4.setArray(randArray4);
-                    System.out.println("Inc MS");
                     incMS1.setArray(incArray1);
                     incMS2.setArray(incArray2);
                     incMS3.setArray(incArray3);
                     incMS4.setArray(incArray4);
-                    System.out.println("Dec MS");
                     decMS1.setArray(decArray1);
                     decMS2.setArray(decArray2);
                     decMS3.setArray(decArray3);
                     decMS4.setArray(decArray4);
 
                     //Perform Heapsort on arrays
-                    System.out.println("Random HS");
                     randHS1.setArray(randArray1);
                     randHS2.setArray(randArray2);
                     randHS3.setArray(randArray3);
                     randHS4.setArray(randArray4);
-                    System.out.println("Random HS");
                     incHS1.setArray(incArray1);
                     incHS2.setArray(incArray2);
                     incHS3.setArray(incArray3);
                     incHS4.setArray(incArray4);
-                    System.out.println("Random HS");
                     decHS1.setArray(decArray1);
                     decHS2.setArray(decArray2);
                     decHS3.setArray(decArray3);
