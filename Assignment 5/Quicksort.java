@@ -2,7 +2,7 @@
 public class Quicksort {
     private int low = 0, high = 1;
     private int[] array;
-    private int compCount = 0;
+    private long compCount = 0;
     
     public Quicksort(){
     }
@@ -46,7 +46,7 @@ public class Quicksort {
     } 
 
     // getter for quicksort comparison count
-    public int getCompCount(){
+    public long getCompCount(){
         return compCount;
     }
 }
