@@ -5,18 +5,64 @@
 // Assignment:  6
 // IDE:         Visual Studio Code
 
+import java.util.ArrayList;
 import java.util.Scanner;
 public class DynamicHashing {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
+        Scanner inputString = new Scanner(System.in);
         boolean run = true;
         String question = "";
+        int userInput = 0;
+        String userString = "";
+        String token = "";
+        ArrayList<ArrayList<String>> hashTable = new ArrayList<ArrayList<String>>();
+        for (int i = 0; i < 24; i++){
+            hashTable.add(new ArrayList<String>());
+        }
+        System.out.println(hashTable.size());
 
         while(run){
             Menu();
             question = "Enter Option Number: ";
-            input(input, question);
+            userInput = input(input, question);
+
+            switch(userInput){
+                case 1:
+                    System.out.print("Text to hash: ");
+                    userString = stringInput(inputString);
+                    userString += ' ';
+                    System.out.println("User String: " + userString);
+                    break;
+                case 2:
+                    for (int i = 0; i < userString.length(); i++){
+                        if (userString.charAt(i) == ' '){
+                            token = token.toLowerCase();
+                            System.out.println(token);
+                            hashFunction(token, hashTable);
+                            token = "";
+                            i++;
+                        }
+                        if (i < userString.length()) {
+                            token += userString.charAt(i);
+                        }
+                    }
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    System.out.println("Exiting Program...");
+                    run = false;
+                    break;
+                default:
+                    System.out.println("Please input a valid menu option (1-5).");
+                    break;
+            }
         }
+
+        input.close();
         
     }   
     
@@ -26,10 +72,11 @@ public class DynamicHashing {
      */
     static void Menu(){
         System.out.print("\n\n---------------MAIN MENU---------------\n"
-                       + "1. Populate Arrays\n"
-                       + "2. Run Algorithms\n"
-                       + "3. Display outputs\n"
-                       + "4. Exit program\n"
+                       + "1. Read Text Input\n"
+                       + "2. Hash Input Text to Hash Table\n"
+                       + "3. Display Words and Occurences\n"
+                       + "4. Display Efficiency Outputs\n" 
+                       + "5. Exit Program\n" 
                        + "\nEnter option number: ");
     }
 
@@ -38,7 +85,6 @@ public class DynamicHashing {
      * Output: integer to be used for input
      */
     static int input(Scanner input, String question){
-        // int userInput = 0;
         while(!input.hasNextInt()) { //Checks if the entered input is an integer
             input.next();
             System.out.println("Please enter an Integer\n");
@@ -48,4 +94,15 @@ public class DynamicHashing {
         return userInput;
     }
 
+    static String stringInput(Scanner input){
+        String userInput = input.nextLine();
+        return userInput;
+    }
+    
+    static void hashFunction(String key, ArrayList<ArrayList<String>> hashTable){
+        int index = (int)(key.charAt(0)) - 97;
+        ArrayList<String> list = hashTable.get(index);
+
+        for(int i = 0; i < list.size(); i++)
+    }
 }
