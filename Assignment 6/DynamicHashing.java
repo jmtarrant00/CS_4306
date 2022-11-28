@@ -11,6 +11,7 @@ import java.util.Scanner;
 public class DynamicHashing {
     static int compCount;
     public static void main(String[] args) {
+        //initialize variables
         Scanner input = new Scanner(System.in);
         Scanner inputString = new Scanner(System.in);
         boolean run = true;
@@ -18,11 +19,16 @@ public class DynamicHashing {
         int userInput = 0;
         String userString = "";
         String token = "";
-        ArrayList<ArrayList<ArrayList<String>>> hashTable = new ArrayList<ArrayList<ArrayList<String>>>();
-        ArrayList<String> words = new ArrayList<String>();
         int occurences = 0;
         int numWords = 0;
 
+
+        //create 3d arraylist to for the hash table. 3 dimensions needed for: 1 for storing the full list
+        // one for storing the list of words for each hash, and one for storing the word and it's occurences
+        ArrayList<ArrayList<ArrayList<String>>> hashTable = new ArrayList<ArrayList<ArrayList<String>>>();
+
+        //Arraylist to hold the individual words for recall
+        ArrayList<String> words = new ArrayList<String>();
 
         while(run){
             Menu();
