@@ -7,7 +7,9 @@
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
 public class DynamicHashing {
+    static int compCount;
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         Scanner inputString = new Scanner(System.in);
@@ -17,6 +19,8 @@ public class DynamicHashing {
         String userString = "";
         String token = "";
         ArrayList<ArrayList<String>> hashTable = new ArrayList<ArrayList<String>>();
+        ArrayList<String> words = new ArrayList<String>();
+        int occurences = 0;
         for (int i = 0; i < 24; i++){
             hashTable.add(new ArrayList<String>());
         }
@@ -32,13 +36,17 @@ public class DynamicHashing {
                     System.out.print("Text to hash: ");
                     userString = stringInput(inputString);
                     userString += ' ';
-                    System.out.println("User String: " + userString);
+                    System.out.println("User String:  " + userString);
                     break;
                 case 2:
                     for (int i = 0; i < userString.length(); i++){
                         if (userString.charAt(i) == ' '){
                             token = token.toLowerCase();
-                            System.out.println(token);
+                            token.replaceAll("[^a-zA-Z0-9]", "");
+                            if(!words.contains(token)){
+                                System.out.println("Added to list");
+                                words.add(token);
+                            }
                             hashFunction(token, hashTable);
                             token = "";
                             i++;
@@ -47,8 +55,18 @@ public class DynamicHashing {
                             token += userString.charAt(i);
                         }
                     }
+
+                    System.out.println("Hash Table:" + hashTable);
                     break;
                 case 3:
+                    System.out.println("Word List: " + words);
+                    System.out.println("Key Word    Word Count");
+                    System.out.println("----------------------");
+                    for(int i = 0; i < words.size(); i++){
+                        token = words.get(i);
+                        occurences = countOccurences(hashTable, token);
+                        System.out.println(token + "      " + occurences);
+                    }
                     break;
                 case 4:
                     break;
@@ -103,6 +121,26 @@ public class DynamicHashing {
         int index = (int)(key.charAt(0)) - 97;
         ArrayList<String> list = hashTable.get(index);
 
-        for(int i = 0; i < list.size(); i++)
+        for(int i = 0; i < list.size(); i++){
+            if(list.get(i).compareTo(key) > 0){
+                System.out.println("Add word");
+                list.add(i, key);
+                compCount++;
+                break;
+            }
+        }
+    }
+
+    static int countOccurences(ArrayList<ArrayList<String>> hashTable, String token){
+        int occurences = 0;
+        ArrayList<String> tempList = new ArrayList<>();
+        int index = (int)token.charAt(0) - 97;
+        tempList = hashTable.get(index);
+        for(int i = 0; i < tempList.size(); i++){
+            if(tempList.get(i) == token){
+                occurences++;
+            }
+        }
+        return occurences;
     }
 }
