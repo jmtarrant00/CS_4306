@@ -30,21 +30,20 @@ public class DynamicHashing {
         //Arraylist to hold the individual words for recall
         ArrayList<String> words = new ArrayList<String>();
 
+        //Main program loop
         while(run){
-            Menu();
-            question = "Enter Option Number: ";
-            userInput = input(input, question);
+            Menu(); //Print Menu
+            question = "Enter Option Number: "; //set question for function
+            userInput = input(input, question); //get user input for option
 
+            //Switch statement for menu operation
             switch(userInput){
-                case 1:
-                    if(!hashTable.isEmpty()){
+                case 1: //FIRST OPTION
+                    if(!hashTable.isEmpty()){ //reset all the values for the program if option one is selected again
                         hashTable.clear();
                         words.clear();
                         numWords = 0;
                         token = "";
-                        for (int i = 0; i < 26; i++){
-                            hashTable.add(new ArrayList<ArrayList<String>>());
-                        }
                     }
                     System.out.print("Text to hash: ");
                     userString = stringInput(inputString);
