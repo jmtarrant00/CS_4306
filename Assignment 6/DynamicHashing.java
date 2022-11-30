@@ -45,55 +45,59 @@ public class DynamicHashing {
                         numWords = 0;
                         token = "";
                     }
+                    //Get user input for the string 
                     System.out.print("Text to hash: ");
                     userString = stringInput(inputString);
-                    userString += ' ';
+                    userString += ' '; //Add a space to the end of the string to allow program to parse last word
                     System.out.println("User String:  " + userString);
+                    //print string to ensure that it is correct
                     break;
-                case 2:
+                case 2: //SECOND OPTION
+                    //Fill Hast Table with 26 spots
                     for (int i = 0; i < 26; i++){
                         hashTable.add(new ArrayList<ArrayList<String>>());
                     }
+
+                    // Read the user string into the word list and hash table
                     for (int i = 0; i < userString.length(); i++){
                         if (userString.charAt(i) == ' '){
                             numWords++;
-                            token = token.toLowerCase();
-                            if(!words.contains(token)){
-                                words.add(token);
+                            token = token.toLowerCase(); //convert all letters to lower case
+                            if(!words.contains(token)){ //check to see if token is already in word list
+                                words.add(token); //add token to word list
                             }
+                            //Run the hash function on the token
                             hashFunction(token, hashTable);
-                            token = "";
-                            i++;
+                            token = ""; //reset the token
+                            i++; //increment i again to skip the space
                         }
                         if (i < userString.length() && Character.isLetter(userString.charAt(i))) {
-                            token += userString.charAt(i);
+                            //check whether within the string, and if the current character is a letter
+                            token += userString.charAt(i); //add character to token
                         }
                     }
                     break;
-                case 3:
+                case 3: //THIRD OPTION
                     System.out.println("Word List: " + words);
                     System.out.println("Key Word    Word Count");
                     System.out.println("----------------------");
+                    //for each word in word list, retreive the number of occurences
                     for(int i = 0; i < words.size(); i++){
                         token = words.get(i);
-                        occurences = countOccurences(hashTable, token);
-                        if(words.get(i).length() <= 4){
-                            System.out.println(token + "            " + occurences);
-                        } else {
-                            System.out.println(token + "    " + occurences);
-                        }
+                        occurences = countOccurences(hashTable, token); //set the number of occurences to the output of the countOccurences function
+                        System.out.format("%-6s %10s\n", token, occurences); //Print out the token and the times it occurs
                     }
                     break;
-                case 4:
+                case 4: //FOURTH OPTION
                     System.out.println("Input: " + userString);
                     System.out.println("Inputs Size: " + numWords);
                     System.out.println("Number of Comparisons: " + compCount);
                     break;
-                case 5:
+                case 5: //EXIT OPTION 
                     System.out.println("Exiting Program...");
-                    run = false;
+                    run = false; //set run to false to break the while loop
                     break;
-                default:
+                default: //DEFAULT OPTION
                     System.out.println("Please input a valid menu option (1-5).");
                     break;
             }
@@ -132,30 +136,50 @@ public class DynamicHashing {
         return userInput;
     }
 
+    /*This function takes the string input from the user and returns it
+     * Input: Scanner object
+     * Output: user string 
+     */
     static String stringInput(Scanner input){
         String userInput = input.nextLine();
         return userInput;
     }
-    
+
+    /*This is the hash function. It takes the token provided to it, converts the first 
+     *  letter of the token to ascii code, then normalizes it to the range of indices for
+     *  the hash table. Once it has the normalized input, it checks to see if the hash table
+     *  is empty, or if the word is already in the table. If the word is already in the hash table
+     *  it increments the counter for that word
+     * 
+     * Input: token string, and the arraylist containing the hash table
+     * Output: the hash table with the key in the proper place
+     */    
     static void hashFunction(String key, ArrayList<ArrayList<ArrayList<String>>> hashTable){
-        int index = (int)(key.charAt(0)) - 97;
-        ArrayList<ArrayList<String>> list = hashTable.get(index);
+        //Initialize Variables
+
+        int index = (int)(key.charAt(0)) - 97; //Get the index for the hash table that the token corresponds to
+
+        ArrayList<ArrayList<String>> list = hashTable.get(index); //grab the list of tokens at the proper index
         Integer count;
 
+        //If the list is empty 
         if(list.size() == 0){
             list.add(new ArrayList<>());
             list.get(0).add(key);
             list.get(0).add("1");
         } else {
+            //Scan through the list of tokens and see if the current token matches any that are ther
             for(int i = 0; i < list.size(); i++){
-                compCount++;
-                if(key.equals(list.get(i).get(0))){
+                compCount++; //increment comparison count
+                if(key.equals(list.get(i).get(0))){ //check if token is equal to current word
+                    //Extract the count and parse it to an int. Increment it, then put it back in the list as a string
                     count = Integer.parseInt(list.get(i).get(1));
                     count++;
                     list.get(i).set(1, count.toString());
-                    return;
+                    return; //Return to main
                 }              
             }
+            //If the word is not in the list
             list.add(new ArrayList<>());
             list.get(list.size()-1).add(key);
             list.get(list.size()-1).add("1");
@@ -164,16 +188,27 @@ public class DynamicHashing {
 
     }
 
+    /*This function counts the occurences for each word in the hash table. It creates a 
+     *  temporary list of the index for the word, using the same method as the hash function.
+     *  It then scans through that list to find the right word, then extracts the occurences 
+     *  for that word. 
+     * 
+     * Input: Hash table and the token to find
+     * Output: an int containing the number of occurences of the token
+     */
     static int countOccurences(ArrayList<ArrayList<ArrayList<String>>> hashTable, String token){
+        //Initialize Variables
         int occurences = 0;
         ArrayList<ArrayList<String>> tempList = new ArrayList<>();
+        //Get index for word list 
         int index = (int)token.charAt(0) - 97;
         tempList = hashTable.get(index);
-        for(int i = 0; i < tempList.size(); i++){
+        for(int i = 0; i < tempList.size(); i++){ //Scan through word list for token
             if(tempList.get(i).get(0).equals(token)){
-                occurences = Integer.parseInt(tempList.get(i).get(1));
+                occurences = Integer.parseInt(tempList.get(i).get(1)); //Extract occurences
             }
         }
+        //Return Occurences
         return occurences;
     }
 }
