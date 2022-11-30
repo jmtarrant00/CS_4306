@@ -5,6 +5,24 @@
 // Assignment:  6
 // IDE:         Visual Studio Code
 
+/* Analysis Block
+ *  Test 1: 0 Comparisons
+ *  Test 2: 25 Comparisons
+ *  Test 3: 325 Comparisons
+ *  Test 4: 27 Comparisons
+ *  Test 5: 1632 Comparisons
+ * 
+ * For test 1, we got 0 comparisons. This is because there was only one word that started with each letter, 
+ *  meaning that there were no comparisons to be made since each word was hashed to a unique spot. This changed
+ *  the rest of the tests, with the number of comparisons for the rest of the tests rising. For tests 2 and 3, 
+ *  the reason that the values differ so drastically even though they both only contain words that start with 
+ *  the same letter is that for test 2, all of the words are the same, so the program only had to make one
+ *  comparison for each word. In test 3 however, all of the words are different, meaning that each word had to be
+ *  compared to all the other words already in the hash table. The number of comparisons here reflects the theoretical 
+ *  numbers from the slides
+ * 
+ */
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -44,6 +62,7 @@ public class DynamicHashing {
                         words.clear();
                         numWords = 0;
                         token = "";
+                        compCount = 0;
                     }
                     //Get user input for the string 
                     System.out.print("Text to hash: ");
