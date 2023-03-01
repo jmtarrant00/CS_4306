@@ -67,7 +67,6 @@
 //Code Section
 
 //Remove if gives error, package assignment was required by my ide
-package Assignment3;
 
 //Import for Scanner and ArrayList
 import java.util.*;
