@@ -10,16 +10,13 @@ class Array(object):
       if 0 <= n and n < self.num_items: # Check if n is in bounds, and
          return self.array[n]            # only return item if in bounds
 
-
    def set(self, n, value):            # Set the value at index n
       if 0 <= n and n < self.num_items: # Check if n is in bounds, and
          self.array[n] = value           # only set item if in bounds
 
-
    def insert(self, item):             # Insert item at end
       self.array[self.num_items] = item   # Item goes at current end
       self.num_items += 1               # Increment number of items
-
 
    def find(self, item):               # Find index for item
       for j in range(self.num_items):   # Among current items
@@ -30,7 +27,6 @@ class Array(object):
 
    def search(self, item):             # Search for item
       return self.get(self.find(item)) # and return item if found
-
 
    def delete(self, item):             # Delete first occurrence
       for j in range(self.num_items):   # of an item
